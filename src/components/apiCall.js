@@ -3,6 +3,7 @@ import axios from 'axios'
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
+import { get } from 'http';
 
 function ApiCall() {
 
@@ -27,15 +28,22 @@ function ApiCall() {
         });
     }, [])
 
-
     const getUsername = (userInfo) =>{
         const {name: {first, last}} = userInfo;
         return `${first} ${last}`;
     }
 
-    const useStyles = makeStyles((theme) => ({
+    const getGender = (userInfo) =>{
+        const {gender} = userInfo;
+        return `${gender}`;
+    }
 
-                
+    const getAddress = (userInfo) =>{
+        const {location : {street: {name, number}}} = userInfo;
+        return `${name} ${number}`;
+    }
+
+    const useStyles = makeStyles((theme) => ({          
         root: {
             flexGrow: 1,
         },
@@ -49,37 +57,46 @@ function ApiCall() {
 const classes = useStyles();
 
     return (
-        <div>
+        
         <Grid container spacing={3}>
 
             {randomPersonInfo.map((userInfo, idx) => (
                      <Grid item xs={12}>
                          <Paper className={classes.paper} >
-                             {getUsername(userInfo)}
-                             
+                             {getUsername(userInfo)} 
+                         </Paper>
+                     </Grid>
+                ))}
+
+
+            {randomPersonInfo.map((userInfo, idx) => (
+                     <Grid item xs={4}>
+                         <Paper className={classes.paper} >
+                             {getGender(userInfo)}
+                         </Paper>
+                     </Grid>
+                ))}
+
+            {randomPersonInfo.map((userInfo, idx) => (
+                     <Grid item xs={4}>
+                         <Paper className={classes.paper} >
+                             {getAddress(userInfo)}
+                         </Paper>
+                     </Grid>
+                ))}
+
+            {randomPersonInfo.map((userInfo, idx) => (
+                     <Grid item xs={4}>
+                         <Paper className={classes.paper} >
+                             {getGender(userInfo)}
                          </Paper>
                      </Grid>
                 ))}
                 
-            {randomPersonInfo.map((userInfo, idx) => (
-                     <Grid item xs={12}>
-                         <Paper className={classes.paper} >
-                         </Paper>
-                     </Grid>
-                ))}
+            
 
         </Grid>
-
-
-            <Grid container spacing={3}>
-                <Grid item xs={8}>
-                    <Paper className={classes.paper} >cascata</Paper>
-                </Grid>
-            </Grid>
-
-
-
-        </div>
+        
     )
 }
 
