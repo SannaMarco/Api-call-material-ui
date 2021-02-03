@@ -1,24 +1,13 @@
-import React, {useState} from 'react'
-import LoginForm from './components/loginForm'
-import axios from 'axios'
+import React, {useState} from 'react';
+import LoginForm from './components/loginForm';
+
+
 
 function Login() {
-  const [randomUserData, setRandomUserData] = useState('')
   const [user, setUser] = useState({name:"", email:""})
   const [error, setError] = useState("");
   const {name, email} = user;
 
-  const url = 'https://randomuser.me/api';
-
-  const fetchData = async () => {
-    try {
-      const res = await axios.get(url);
-      console.log(res);
-      return res;
-    } catch (err) {
-      console.log(err);
-    }
-  }
 
   const Login = details => {
     const { email, password, name } = details;
@@ -54,11 +43,11 @@ function Login() {
       ) : (
         <div>
         <LoginForm login={Login} error={error} />
-        <button onClick={fetchData}>FETCHDATA</button>
+        
         </div>
       )}
     </div>
   )
 }
 
-export default Login
+export default Login;

@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 
+import Button from '@material-ui/core/Button';
+
+
 function LoginForm({ login, error }) {
   const [details, setDetails] = useState({ name: "", email: "", password: "" });
 
@@ -50,8 +53,10 @@ function LoginForm({ login, error }) {
             value={details.password}
           />
         </div>
-
-        <input type="submit" value="LOGIN" />
+        
+        <Button variant='contained'>
+          <input type="submit" value='login' />
+        </Button>
       </div>
     </form>
   );
