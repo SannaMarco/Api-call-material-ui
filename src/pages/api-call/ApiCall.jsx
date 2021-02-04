@@ -5,28 +5,35 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import { get } from 'http';
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        flexGrow: 1,
+    },
+    paper: {
+        padding: theme.spacing(2),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+    },
+}));
+
 function ApiCall() {
-
-    
     const [randomPersonInfo, setRandomPersonInfo] = useState([]);
-
-    const url = 'https://randomuser.me/api';
-    
-
-    const fetchData = async () =>{
-        try {
-            const { data } = await axios.get(url);
-            return data;
-        } catch (err) {
-            console.log(err);
-        }
-    }
+    const classes = useStyles();
 
     useEffect(() =>{
         fetchData().then((data) =>{
             setRandomPersonInfo(data.results);
         });
     }, [])
+
+    const fetchData = async () =>{
+        try {
+            const { data } = await axios.get('https://randomuser.me/api');
+            return data;
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     const getUsername = (userInfo) =>{
         const {name: {first, last}} = userInfo;
@@ -42,19 +49,6 @@ function ApiCall() {
         const {location : {street: {name, number}}} = userInfo;
         return `${name} ${number}`;
     }
-
-    const useStyles = makeStyles((theme) => ({          
-        root: {
-            flexGrow: 1,
-        },
-        paper: {
-            padding: theme.spacing(2),
-            textAlign: 'center',
-            color: theme.palette.text.secondary,
-        },
-        }));
-
-const classes = useStyles();
 
     return (
         

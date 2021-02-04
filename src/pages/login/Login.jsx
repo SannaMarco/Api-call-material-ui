@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
-import LoginForm from './components/loginForm';
-
+import LoginForm from './components/LoginForm';
 
 
 function Login() {
   const [user, setUser] = useState({name:"", email:""})
   const [error, setError] = useState("");
   const {name, email} = user;
-
 
   const Login = details => {
     const { email, password, name } = details;
@@ -24,7 +22,6 @@ function Login() {
       setError("Details do not match")
     }
   }
-
   const Logout = () => {
       console.log("Logout")
       setUser({
@@ -34,7 +31,7 @@ function Login() {
   }
 
   return (
-    <div className="login">
+    <div>
       {(email !== "") ? (
         <div>
           <h2>Welcome, <span>{name}</span></h2>
@@ -43,7 +40,6 @@ function Login() {
       ) : (
         <div>
         <LoginForm login={Login} error={error} />
-        
         </div>
       )}
     </div>
