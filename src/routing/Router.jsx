@@ -1,11 +1,7 @@
 import React from 'react';
-import Login from './Login';
-import ApiCall from './components/ApiCall';
+import Login from '../pages/login/Login';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
-
-
-
-
+import ApiCall from "../pages/api-call/ApiCall";
 
 function Router() {
     return (
@@ -13,6 +9,8 @@ function Router() {
             <Switch>
                 <Route path='/' exact component={Login} />
                 <Route path='/api' exact component={ApiCall} />
+                {/*<Route path='/dashboard' exact component={Dashboard} />
+                <Route path='/table' exact component={TablePage} />*/}
                 <Route path='/' render={() => <div>404</div>} />
             </Switch>
         </BrowserRouter>
