@@ -54,9 +54,9 @@ function LoginForm({ login, error }) {
           />
         </div>
         
-        <Button variant='contained'>
+        
           <input type="submit" value='login' />
-        </Button>
+        
       </div>
     </form>
   );
