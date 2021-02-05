@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import LoginForm from './components/LoginForm';
+import { Redirect } from 'react-router-dom';
+
 
 
 function Login() {
@@ -32,11 +34,9 @@ function Login() {
 
   return (
     <div>
+
       {(email !== "") ? (
-        <div>
-          <h2>Welcome, <span>{name}</span></h2>
-          <button onClick={Logout}>Logout</button>
-        </div>
+        <Redirect to='dashboard' />
       ) : (
         <div>
         <LoginForm login={Login} error={error} />

@@ -1,19 +1,28 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
-import { get } from 'http';
+import PaperComponent from './components/Paper'
+import NavBar from './components/NavBar'
+
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
     paper: {
+        marginTop: theme.spacing(2),
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
     },
+    menuButton: {
+        marginRight: theme.spacing(2),
+      },
+      title: {
+        flexGrow: 1,
+      }
 }));
 
 function ApiCall() {
@@ -51,45 +60,28 @@ function ApiCall() {
     }
 
     return (
+        <div>
+
+            <NavBar />
         
-        <Grid container spacing={3}>
-
-            {randomPersonInfo.map((userInfo, idx) => (
-                     <Grid item xs={12}>
-                         <Paper className={classes.paper} >
-                             {getUsername(userInfo)} 
-                         </Paper>
-                     </Grid>
-                ))}
+            <Grid container spacing={5}>  
 
 
-            {randomPersonInfo.map((userInfo, idx) => (
-                     <Grid item xs={4}>
-                         <Paper className={classes.paper} >
-                             {getGender(userInfo)}
-                         </Paper>
-                     </Grid>
-                ))}
 
-            {randomPersonInfo.map((userInfo, idx) => (
-                     <Grid item xs={4}>
-                         <Paper className={classes.paper} >
-                             {getAddress(userInfo)}
-                         </Paper>
-                     </Grid>
-                ))}
+                {randomPersonInfo.map((userInfo, idx) => (
+                    <PaperComponent data={getUsername(userInfo)} classes={classes.paper} />
+                ))}  
+                {randomPersonInfo.map((userInfo, idx) => (
+                    <PaperComponent data={getGender(userInfo)} classes={classes.paper} />
+                ))}  
+                {randomPersonInfo.map((userInfo, idx) => (
+                    <PaperComponent data={getAddress(userInfo)} classes={classes.paper} />
+                ))}  
 
-            {randomPersonInfo.map((userInfo, idx) => (
-                     <Grid item xs={4}>
-                         <Paper className={classes.paper} >
-                             {getGender(userInfo)}
-                         </Paper>
-                     </Grid>
-                ))}
-                
-            
 
-        </Grid>
+            </Grid>
+    
+        </div>
         
     )
 }

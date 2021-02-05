@@ -3,6 +3,8 @@ import Button from '@material-ui/core/Button';
 import {TextField, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -40,7 +42,7 @@ function LoginForm({ login, error }) {
             variant="outlined"
             size="small"
             label="Email"
-            onChange={(e) => setDetails({ ...details, name: e.target.value })}
+            onChange={(e) => setDetails({ ...details, email: e.target.value })}
             value={details.email}
         />
 
@@ -49,8 +51,8 @@ function LoginForm({ login, error }) {
             size="small"
             label="Password"
             type="password"
-            onChange={(e) => setDetails({ ...details, name: e.target.value })}
-            value={details.name}
+            onChange={(e) => setDetails({ ...details, password: e.target.value })}
+            value={details.password}
         />
 
         <Button type="submit" variant="contained" color="primary">Login</Button>
