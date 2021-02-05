@@ -1,33 +1,26 @@
 import React from 'react'
-import MaterialTable from 'material-table'
+import { default as MatTable } from 'material-table'
+import Layout from "../../layout/Layout";
 
-function MaterialTtable() {
+export default function MaterialTable() {
     return (
-
-
+        <Layout>
             <div style={{maxWidth: '100%'}}>
-
-                    <MaterialTable
-                        columns={[
-                        { title: 'name', field: 'name'},
-                        { title: 'surname', field: 'surname'},
-                        { title: 'birth', field: 'birthYear', type: 'numeric'},
-                        { title: 'city', field: 'birthCity', lookup: {34: 'instanbul', 63: 'miami'}}
-                    ]} 
-                    data={[{ name: 'mamhood', surname: 'barak', birthYear: 1969, birthCity: 63 }]}
-                    title='Demo'
-
-
-
-                    />
-
+                <MatTable
+                    columns={[
+                    { title: 'name', field: 'name'},
+                    { title: 'surname', field: 'surname'},
+                    { title: 'birth', field: 'birthYear', type: 'numeric'},
+                    { title: 'city', field: 'birthCity', lookup: {34: 'instanbul', 63: 'miami'}}
+                ]}
+                data={[{ name: 'mamhood', surname: 'barak', birthYear: 1969, birthCity: 63 }]}
+                title='Demo'
+                />
             </div>
-
-                
-
-
-        
+        </Layout>
     )
 }
 
-export default MaterialTtable
+export function getData(){
+    return true;
+}
