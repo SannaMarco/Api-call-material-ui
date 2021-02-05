@@ -1,7 +1,7 @@
 import React from 'react';
 import Login from '../pages/login/Login';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
-import ApiCall from "../pages/api-call/ApiCall";
+import Dashboard from "../pages/dashboard/Dashboard";
 import MaterialTable from '../pages/material-table/MaterialTable'
 
 function Router() {
@@ -10,7 +10,7 @@ function Router() {
             <Switch>
                 <Route path='/' exact component={Login} />
 
-                <Route path='/dashboard' exact component={ApiCall} />
+                <Route path='/dashboard' exact component={Dashboard} />
 
                 <Route path='/table' exact component={MaterialTable} />
 

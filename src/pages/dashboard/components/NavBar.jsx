@@ -22,13 +22,9 @@ const useStyles = makeStyles((theme) => ({
       }
 }));
 
-function NavBar() {
-
+function NavBar(props) {
     const classes = useStyles();
-
-
-
-
+    const {onDrawerOpen} = props;
 
     return (
         <div>
@@ -36,7 +32,7 @@ function NavBar() {
                 <AppBar position="static">
                     <Toolbar>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon />
+                        <MenuIcon onClick={onDrawerOpen}/>
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
                         Material Dashboard

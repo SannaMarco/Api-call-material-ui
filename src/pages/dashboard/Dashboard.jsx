@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import PaperComponent from './components/Paper'
 import NavBar from './components/NavBar'
+import Layout from "../../layout/Layout";
 
 
 
@@ -25,13 +26,14 @@ const useStyles = makeStyles((theme) => ({
       }
 }));
 
-function ApiCall() {
+function Dashboard() {
     const [randomPersonInfo, setRandomPersonInfo] = useState([]);
     const classes = useStyles();
 
     useEffect(() =>{
-        fetchData().then((data) =>{
-            setRandomPersonInfo(data.results);
+        fetchData().then((data) => {
+            const results = data ? data.results : [];
+            setRandomPersonInfo(results);
         });
     }, [])
 
@@ -60,30 +62,29 @@ function ApiCall() {
     }
 
     return (
+        <Layout>
         <div>
-
-            <NavBar />
-        
-            <Grid container spacing={5}>  
-
-
-
+            <Grid container spacing={2}>
                 {randomPersonInfo.map((userInfo, idx) => (
-                    <PaperComponent data={getUsername(userInfo)} classes={classes.paper} />
+                    <Grid item xs={4}>
+                        <PaperComponent data={getUsername(userInfo)} className={classes.paper} />
+                    </Grid>
                 ))}  
                 {randomPersonInfo.map((userInfo, idx) => (
-                    <PaperComponent data={getGender(userInfo)} classes={classes.paper} />
+                    <Grid item xs={4}>
+                        <PaperComponent data={getGender(userInfo)} className={classes.paper} />
+                    </Grid>
                 ))}  
                 {randomPersonInfo.map((userInfo, idx) => (
-                    <PaperComponent data={getAddress(userInfo)} classes={classes.paper} />
+                    <Grid item xs={4}>
+                        <PaperComponent data={getAddress(userInfo)} className={classes.paper} />
+                    </Grid>
                 ))}  
-
-
             </Grid>
-    
         </div>
+        </Layout>
         
     )
 }
 
-export default ApiCall;
+export default Dashboard;
