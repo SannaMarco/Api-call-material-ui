@@ -10,7 +10,7 @@ import Layout from "../../layout/Layout";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        flexGrow: 1,
+        margin: '40px 0'
     },
     paper: {
         marginTop: theme.spacing(2),
@@ -61,9 +61,11 @@ function Dashboard() {
         return `${name} ${number}`;
     }
 
+    
+
     return (
-        <Layout>
-        <div>
+        <Layout title='Dashboard'>
+        <div className={classes.root}>
             <Grid container spacing={2}>
                 {randomPersonInfo.map((userInfo, idx) => (
                     <Grid item xs={4}>

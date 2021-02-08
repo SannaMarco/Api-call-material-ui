@@ -4,8 +4,9 @@ import Layout from "../../layout/Layout";
 
 export default function MaterialTable() {
     return (
-        <Layout>
-            <div style={{maxWidth: '100%'}}>
+        <Layout title='Table'>
+            <div style={{maxWidth: '100%',
+                        margin: '50px 0'}}>
                 <MatTable
                     columns={[
                     { title: 'name', field: 'name'},
