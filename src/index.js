@@ -5,18 +5,30 @@ import Router from './routing/Router';
 import './index.css'
 
 const theme = createMuiTheme({
-    palette: {
-        primary: {
-            light: '#333',
-            main: '#4a94b8',
-            dark: '#356a84',
-        },
-        secondary: {
-            light: '#333',
-            main: '#333',
-            dark: '#333',
-        },
-    }
+    typo:{
+        title:{
+            fontSize: '40px',
+            margin: '15px'
+        }
+    },
+    login:{
+       inputFields:{
+        width: '80%',
+        margin: '20px 0'
+       },
+       flexColumn:{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems:'center'
+       }
+   },
+   buttons:{
+       primary:{
+           color:'white',
+           background:'green'
+       }
+   }
+    
 })
 
 ReactDOM.render(

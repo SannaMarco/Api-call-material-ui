@@ -8,18 +8,10 @@ import WaringIcon from '@material-ui/icons/Warning'
 
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems:'center'
-  },
-  title:{
-
-  },
-  inputFields: {
-    width: '80%',
-    margin: '20px 0'
-  }
+  root: theme.login.flexColumn,
+  title: theme.typo.title,
+  inputFields: theme.login.inputFields,
+  buttonPrimary: theme.buttons.primary,
 }));
 
 function LoginForm({ login, error }) {
@@ -36,7 +28,7 @@ function LoginForm({ login, error }) {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className={classes.root}>
-        <Typography variant="h4">Login</Typography>
+        <Typography className={classes.title} variant="h4">Login</Typography>
 
         {error !== "" ? <div className="error">{error}</div> : ""}
 
@@ -74,7 +66,7 @@ function LoginForm({ login, error }) {
          {errors.password && <p><WaringIcon/>  This is required</p>}
 
 
-        <Button type="submit" variant="contained" color="primary">Login</Button>
+        <Button type="submit" variant="contained" className={classes.buttonPrimary}>Login</Button>
         
       </div>
     </form>

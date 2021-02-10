@@ -24,13 +24,7 @@ function Login() {
       setError("Details do not match")
     }
   }
-  const Logout = () => {
-      console.log("Logout")
-      setUser({
-        name:"",
-        email:""
-      })
-  }
+
 
   return (
     <div>
