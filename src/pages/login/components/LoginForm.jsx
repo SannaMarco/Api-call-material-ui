@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from '@material-ui/core/Button';
 import {TextField, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
@@ -18,10 +18,17 @@ function LoginForm({ login, error }) {
   const classes = useStyles();
   const {register, handleSubmit, errors} = useForm();
 
+  function useLocalStorage(){
+    const [data, setData] = useState({userName:'', userEmail:'', key:''})
+    useEffect(() => {
+      localStorage.setItem(data);   
+      console.log(data);
+    }, [data])
+  }
+
   const onSubmit = data =>{
     console.log(data.name);
     login(data);
-
 
   }
 
